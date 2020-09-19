@@ -243,8 +243,8 @@ google.charts.load('current', {
         ["Poland", 120],
         ["Slovakia", 119],
         ["Iceland", 122],
-        ["Latvia", 167],
-        ["Slovenia", 168],
+        ["Latvia", 121],
+        ["Slovenia", 121],
         ["Estonia", 120],
         ["Liechtenstein", 121],
         ["Malaysia", 90],
@@ -415,9 +415,10 @@ google.charts.load('current', {
 
     var options = {
         backgroundColor: '#f2f2f2',
-        colorAxis: {colors: ['#e31b23', '#00853f']},
+        colorAxis: {colors: ['#e31b23', 'yellow', '#00853f']},
         datalessRegionColor: '#f8bbd0',
         defaultColor: '#f5f5f5',
+        tooltip: { trigger: "focus", isHtml: true } 
     };
 
     var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));

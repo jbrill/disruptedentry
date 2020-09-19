@@ -11,11 +11,16 @@ body {
     text-align: center;
 }
 .title {
+    padding-top: 2%;
+    color: slateblue;
     font-family: 'Righteous', cursive;
+}
+.author {
+    color: steelblue;
 }
 .mapContain {
     padding: 2%;
-    border: 2px solid #ccc;
+    border: 1px dashed #ccc;
     display: flex;
     align-items: center;
     justify-content: center;
