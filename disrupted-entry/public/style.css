@@ -2,7 +2,7 @@
 
 
 html {
-    background: #f2f2f2;
+    background: white;
 }
 
 body {
@@ -12,17 +12,17 @@ body {
 }
 .title {
     padding-top: 2%;
-    color: slateblue;
+    color: black;
+    font-size: 4rem;
     font-family: 'Righteous', cursive;
+}
+.subtitle {
+    color: grey;
+    font-weight: lighter;
 }
 .author {
     color: steelblue;
 }
-.mapContain {
-    padding: 2%;
-    border: 1px dashed #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.world-map {
+    width: 100%;
 }

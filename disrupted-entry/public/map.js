@@ -186,13 +186,13 @@ google.charts.load('current', {
         ["Cameroon", 57],
         ["Haiti", 61],
         ["Liberia", 49],
-        ["Congo", 52],
+        ["COG", 52],
         ["Djibouti", 56],
         ["Myanmar", 54],
         ["Nigeria", 50],
         ["Ethiopia", 50],
         ["South Sudan", 52],
-        ["Democratic Republic of the Congo", 52],
+        ["Congo, The Democratic Republic of The", 52],
         ["Eritrea", 50],
         ["Sri Lanka", 53],
         ["Bangladesh", 50],
@@ -397,7 +397,7 @@ google.charts.load('current', {
         ["Nigeria", 44],
         ["Ethiopia", 41],
         ["South Sudan", 43],
-        ["Democratic Republic of the Congo", 44],
+        ["Congo, The Democratic Republic of The", 44],
         ["Eritrea", 41],
         ["Sri Lanka", 44],
         ["Bangladesh", 42],
@@ -418,7 +418,7 @@ google.charts.load('current', {
     ]);
 
     var options = {
-        backgroundColor: '#f2f2f2',
+        backgroundColor: 'white',
         colorAxis: {colors: ['#e31b23', 'yellow', '#00853f']},
         datalessRegionColor: '#f8bbd0',
         defaultColor: '#f5f5f5',
