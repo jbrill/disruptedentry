@@ -2,7 +2,7 @@
   <v-app responsive>
      <v-snackbar
         :timeout="-1"
-        :value="true"
+        v-model="snackbar"
         absolute
         top
         centered
@@ -16,6 +16,16 @@
         >
           brilj112@newschool.edu
         </a></template>for updates and feedback.
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="white"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+        </template>
       </v-snackbar>
     <h1 class="app-title">Tracking Passport Mobility</h1>
     <h2 class="subtitle">What Countries Have the Strongest Passports?</h2>
@@ -86,6 +96,7 @@ export default {
   },
   data () {
     return {
+      snackbar: true,
       headers: [
         {
           text: 'Country',
