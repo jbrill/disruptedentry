@@ -31,10 +31,10 @@
           />
         </div>
         <div class="legend-contain">
-          <v-card id="legend_1" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-subtitle></v-card>
-          <v-card id="legend_2" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; color: white; height: 100%">Somewhat Mobile</v-card-subtitle></v-card>
-          <v-card id="legend_3" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; color: white; height: 100%;">Somewhat Limited</v-card-subtitle></v-card>
-          <v-card id="legend_4" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; color: white; height: 100%;">Very Limited</v-card-subtitle></v-card>
+          <v-card id="legend_1" class="legend"><v-card-text class="justify-center" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-text></v-card>
+          <v-card id="legend_2" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%">Somewhat Mobile</v-card-text></v-card>
+          <v-card id="legend_3" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%;">Somewhat Limited</v-card-text></v-card>
+          <v-card id="legend_4" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%;">Very Limited</v-card-text></v-card>
         </div>
     </v-container>
     <v-container class="measure-contain">
@@ -846,7 +846,7 @@ body {
   background-color: #00853f;
 }
 #legend_2 {
-  background-color: #C9E04A;
+  background-color: #b8d648;
 }
 #legend_3 {
   background-color: #EAB841;
