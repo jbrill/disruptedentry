@@ -62,7 +62,7 @@
         <p>According to the organization, "Global Passport Power Rank Passports of the world are sorted by their total <a href="https://www.passportindex.org/faq/" target="_blank">Mobility Score</a>, which includes visa-free and visa on arrival privileges. The higher the MS score, the better global mobility its passport bearer enjoys."</p>
         <p>The following factors go into the Mobility Score calcuation: </p><p>"Mobility Score (MS) is the total number of countries that can be easily accessed with a given passport. It is a calculated total based on Visa-free, Visa-on-arrival, eTA, and eVisa issued within 3 days."</p>
     </v-container>
-    <v-container class="measure-contain">
+    <v-container>
         <h2 class="title-small">What did mobility look like before COVID?</h2>
         <div class="map-contain">
           <GChart
