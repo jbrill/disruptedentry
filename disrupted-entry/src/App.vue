@@ -17,8 +17,8 @@
           brilj112@newschool.edu
         </a></template>for updates and feedback.
       </v-snackbar>
-    <h1 class="app-title">Tracking Global Mobility</h1>
-    <h2 class="subtitle">Passport strength today per country</h2>
+    <h1 class="app-title">Tracking Passport Mobility</h1>
+    <h2 class="subtitle">What Countries Have the Strongest Passports?</h2>
     <v-container>
         <div class="map-contain">
           <GChart
