@@ -1,14 +1,8 @@
 <template>
-  <div>
-    <h1 class="title">Tracking Global Mobility</h1>
-    <h2 class="subtitle">Each country's passport strength today</h2>
+  <v-app responsive>
+    <h1 class="app-title">Tracking Global Mobility</h1>
+    <h2 class="subtitle">Passport strength today per country</h2>
     <div>
-        <div class="legend-contain">
-          <div id="legend_1" class="legend"><p>Very Mobile</p></div>
-          <div id="legend_2" class="legend"><p>Somewhat Mobile</p></div>
-          <div id="legend_3" class="legend"><p>Somewhat Limited</p></div>
-          <div id="legend_4" class="legend"><p>Very Limited</p></div>
-        </div>
         <div class="map-contain">
           <GChart
             class="world-map"
@@ -19,30 +13,30 @@
             :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'}"
           />
         </div>
-    </div>
-    <div class="mapContain">
-        <div>
-            <h2>POST COVID</h2>
-            <h6 style="color: red">JULY 2020</h6>
+        <div class="legend-contain">
+          <div id="legend_1" class="legend"><p>Very Mobile</p></div>
+          <div id="legend_2" class="legend"><p>Somewhat Mobile</p></div>
+          <div id="legend_3" class="legend"><p>Somewhat Limited</p></div>
+          <div id="legend_4" class="legend"><p>Very Limited</p></div>
         </div>
-        <div id="regions_div_2" class="world-map"></div>
-        <GChart
-          type="GeoChart"
-          :data="chartData"
-          :options="chartOptions"
-          :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'}"
-        />
     </div>
     <div class="measure-contain">
         <h2 class="title-small">Global Rankings</h2>
+        <v-data-table
+          :headers="headers"
+          :items="countries"
+          class="elevation-1"
+          :items-per-page="15"
+        ></v-data-table>
     </div>
-    <div class="measure-contain">
-        <h2 class="title-small">How is my country measured?</h2>
+    <div class="measure-contain measure-contain-skinny">
+        <h2 class="title-small">How is each country measured?</h2>
+        <p>We use the ranking model from <a href="https://www.passportindex.org/" target="_blank">Passport Index</a>, which provides updated rankings amongst the pandemic, to gather a hollistic global mobility ranking for different countries.</p>
     </div>
     <div class="measure-contain">
         <h2 class="title-small">What did mobility look like before COVID?</h2>
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -54,6 +48,279 @@ export default {
   },
   data () {
     return {
+      headers: [
+        {
+          text: 'Country',
+          align: 'start',
+          sortable: true,
+          value: 'name',
+        },
+        { text: 'Ranking', value: 'ranking' },
+        { text: 'Passport Index Score', value: 'passport_index' },
+        { text: 'Change Since 2019', value: 'change' },
+      ],
+      countries: [
+        {'change': 0, 'name': 'Malta', 'passport_index': 170, 'ranking': 1},
+        {'change': -46, 'name': 'Japan', 'passport_index': 125, 'ranking': 2},
+        {'change': -44, 'name': 'New Zealand', 'passport_index': 125, 'ranking': 3},
+        {'change': -48, 'name': 'Germany', 'passport_index': 124, 'ranking': 4},
+        {'change': -48, 'name': 'Luxembourg', 'passport_index': 124, 'ranking': 5},
+        {'change': -47, 'name': 'Austria', 'passport_index': 124, 'ranking': 6},
+        {'change': -47, 'name': 'Ireland', 'passport_index': 124, 'ranking': 7},
+        {'change': -46, 'name': 'Belgium', 'passport_index': 124, 'ranking': 8},
+        {'change': -47, 'name': 'Switzerland', 'passport_index': 124, 'ranking': 9},
+        {'change': -44, 'name': 'Australia', 'passport_index': 124, 'ranking': 10},
+        {'change': -48, 'name': 'South Korea', 'passport_index': 123, 'ranking': 11},
+        {'change': -49, 'name': 'Finland', 'passport_index': 123, 'ranking': 12},
+        {'change': -48, 'name': 'Italy', 'passport_index': 123, 'ranking': 13},
+        {'change': -49, 'name': 'Spain', 'passport_index': 123, 'ranking': 14},
+        {'change': -47, 'name': 'France', 'passport_index': 123, 'ranking': 15},
+        {'change': -47, 'name': 'Sweden', 'passport_index': 123, 'ranking': 16},
+        {'change': -49, 'name': 'Denmark', 'passport_index': 122, 'ranking': 17},
+        {'change': -49, 'name': 'Greenland', 'passport_index': 122, 'ranking': 18},
+        {'change': -46, 'name': 'Iceland', 'passport_index': 122, 'ranking': 19},
+        {'change': -49, 'name': 'Netherlands', 'passport_index': 122, 'ranking': 20},
+        {'change': -49, 'name': 'Portugal', 'passport_index': 122, 'ranking': 21},
+        {'change': -48, 'name': 'Norway', 'passport_index': 122, 'ranking': 22},
+        {'change': -47,
+          'name': 'United Kingdom',
+          'passport_index': 122,
+          'ranking': 23},
+        {'change': -47, 'name': 'Canada', 'passport_index': 122, 'ranking': 24},
+        {'change': -47, 'name': 'Lithuania', 'passport_index': 122, 'ranking': 25},
+        {'change': -46, 'name': 'Latvia', 'passport_index': 121, 'ranking': 26},
+        {'change': -47, 'name': 'Slovenia', 'passport_index': 121, 'ranking': 27},
+        {'change': -43, 'name': 'Liechtenstein', 'passport_index': 121, 'ranking': 28},
+        {'change': -49,
+          'name': 'Czech Republic',
+          'passport_index': 120,
+          'ranking': 29},
+        {'change': -50, 'name': 'Greece', 'passport_index': 120, 'ranking': 30},
+        {'change': -49, 'name': 'Hungary', 'passport_index': 120, 'ranking': 31},
+        {'change': -49, 'name': 'Poland', 'passport_index': 120, 'ranking': 32},
+        {'change': -48, 'name': 'Estonia', 'passport_index': 120, 'ranking': 33},
+        {'change': -50, 'name': 'Slovakia', 'passport_index': 119, 'ranking': 34},
+        {'change': -47, 'name': 'Monaco', 'passport_index': 117, 'ranking': 35},
+        {'change': -49, 'name': 'Cyprus', 'passport_index': 117, 'ranking': 36},
+        {'change': -47, 'name': 'Crotia', 'passport_index': 117, 'ranking': 37},
+        {'change': -50, 'name': 'Romania', 'passport_index': 116, 'ranking': 38},
+        {'change': -49, 'name': 'Bulgaria', 'passport_index': 116, 'ranking': 39},
+        {'change': -42, 'name': 'San Marino', 'passport_index': 112, 'ranking': 40},
+        {'change': -43, 'name': 'Andorra', 'passport_index': 111, 'ranking': 41},
+        {'change': -42, 'name': 'Uruguay', 'passport_index': 111, 'ranking': 42},
+        {'change': -32, 'name': 'Ukraine', 'passport_index': 109, 'ranking': 43},
+        {'change': -42, 'name': 'Vatican City', 'passport_index': 104, 'ranking': 44},
+        {'change': -79,
+          'name': 'United Arab Emirates',
+          'passport_index': 100,
+          'ranking': 45},
+        {'change': -35, 'name': 'Serbia', 'passport_index': 99, 'ranking': 46},
+        {'change': -26, 'name': 'Georgia', 'passport_index': 97, 'ranking': 47},
+        {'change': -28,
+          'name': 'North Macedonia',
+          'passport_index': 96,
+          'ranking': 48},
+        {'change': -22, 'name': 'Albania', 'passport_index': 94, 'ranking': 49},
+        {'change': -31, 'name': 'Montenegro', 'passport_index': 93, 'ranking': 50},
+        {'change': -27,
+          'name': 'Bosnia and Herzegovina',
+          'passport_index': 92,
+          'ranking': 51},
+        {'change': -29, 'name': 'Moldova', 'passport_index': 91, 'ranking': 52},
+        {'change': -75, 'name': 'Malaysia', 'passport_index': 90, 'ranking': 53},
+        {'change': -81, 'name': 'Singapore', 'passport_index': 88, 'ranking': 54},
+        {'change': -83, 'name': 'United States', 'passport_index': 88, 'ranking': 55},
+        {'change': -78, 'name': 'Brazil', 'passport_index': 83, 'ranking': 56},
+        {'change': -66, 'name': 'Barbados', 'passport_index': 83, 'ranking': 57},
+        {'change': -39, 'name': 'Russia', 'passport_index': 83, 'ranking': 58},
+        {'change': -39, 'name': 'Turkey', 'passport_index': 82, 'ranking': 59},
+        {'change': -79, 'name': 'Argentina', 'passport_index': 81, 'ranking': 60},
+        {'change': -76, 'name': 'Hong Kong', 'passport_index': 81, 'ranking': 61},
+        {'change': -81, 'name': 'Chile', 'passport_index': 80, 'ranking': 62},
+        {'change': -65, 'name': 'Bahamas', 'passport_index': 80, 'ranking': 63},
+        {'change': -60, 'name': 'Seychelles', 'passport_index': 79, 'ranking': 64},
+        {'change': -75, 'name': 'Brunei', 'passport_index': 78, 'ranking': 65},
+        {'change': -81, 'name': 'Mexico', 'passport_index': 78, 'ranking': 66},
+        {'change': -64,
+          'name': 'St. Kitts and Nevis',
+          'passport_index': 78,
+          'ranking': 67},
+        {'change': -63,
+          'name': 'Antigua and Barbuda',
+          'passport_index': 76,
+          'ranking': 68},
+        {'change': -60, 'name': 'Mauritius', 'passport_index': 76, 'ranking': 69},
+        {'change': -75, 'name': 'Israel', 'passport_index': 75, 'ranking': 70},
+        {'change': -66, 'name': 'Costa Rica', 'passport_index': 75, 'ranking': 71},
+        {'change': -63,
+          'name': 'Trinidad and Tobago',
+          'passport_index': 75,
+          'ranking': 72},
+        {'change': -65,
+          'name': 'St. Vincent and the Grenadines',
+          'passport_index': 75,
+          'ranking': 73},
+        {'change': -64, 'name': 'Macao', 'passport_index': 75, 'ranking': 74},
+        {'change': -68, 'name': 'Peru', 'passport_index': 72, 'ranking': 75},
+        {'change': -30, 'name': 'Qatar', 'passport_index': 72, 'ranking': 76},
+        {'change': -63, 'name': 'St. Lucia', 'passport_index': 71, 'ranking': 77},
+        {'change': -31, 'name': 'Kuwait', 'passport_index': 71, 'ranking': 78},
+        {'change': -67, 'name': 'Paraguay', 'passport_index': 70, 'ranking': 79},
+        {'change': -33, 'name': 'South Africa', 'passport_index': 70, 'ranking': 80},
+        {'change': -66, 'name': 'Panama', 'passport_index': 69, 'ranking': 81},
+        {'change': -64, 'name': 'Grenada', 'passport_index': 68, 'ranking': 82},
+        {'change': -63, 'name': 'Dominica', 'passport_index': 68, 'ranking': 83},
+        {'change': -63,
+          'name': 'Solomon Islands',
+          'passport_index': 68,
+          'ranking': 84},
+        {'change': -29, 'name': 'Belize', 'passport_index': 68, 'ranking': 85},
+        {'change': -62, 'name': 'Venezuela', 'passport_index': 67, 'ranking': 86},
+        {'change': -29, 'name': 'Fiji', 'passport_index': 67, 'ranking': 87},
+        {'change': -27, 'name': 'Jamaica', 'passport_index': 67, 'ranking': 88},
+        {'change': -64, 'name': 'Vanuatu', 'passport_index': 66, 'ranking': 89},
+        {'change': -25, 'name': 'Bahrain', 'passport_index': 66, 'ranking': 90},
+        {'change': -70, 'name': 'Taiwan', 'passport_index': 65, 'ranking': 91},
+        {'change': -61, 'name': 'El Salvador', 'passport_index': 65, 'ranking': 92},
+        {'change': -64, 'name': 'Colombia', 'passport_index': 65, 'ranking': 93},
+        {'change': -60, 'name': 'Tuvalu', 'passport_index': 65, 'ranking': 94},
+        {'change': -59, 'name': 'Tonga', 'passport_index': 65, 'ranking': 95},
+        {'change': -26, 'name': 'Ecuador', 'passport_index': 65, 'ranking': 96},
+        {'change': -26, 'name': 'Maldives', 'passport_index': 65, 'ranking': 97},
+        {'change': -63, 'name': 'Samoa', 'passport_index': 64, 'ranking': 98},
+        {'change': -58, 'name': 'Nicaragua', 'passport_index': 64, 'ranking': 99},
+        {'change': -20, 'name': 'Botswana', 'passport_index': 64, 'ranking': 100},
+        {'change': -61, 'name': 'Kiribati', 'passport_index': 63, 'ranking': 101},
+        {'change': -25, 'name': 'Oman', 'passport_index': 63, 'ranking': 102},
+        {'change': -25, 'name': 'Saudi Arabia', 'passport_index': 63, 'ranking': 103},
+        {'change': -24, 'name': 'Belarus', 'passport_index': 63, 'ranking': 104},
+        {'change': -66, 'name': 'Guatemala', 'passport_index': 62, 'ranking': 105},
+        {'change': -28, 'name': 'Guyana', 'passport_index': 62, 'ranking': 106},
+        {'change': -26, 'name': 'Kazakhstan', 'passport_index': 62, 'ranking': 107},
+        {'change': -67, 'name': 'Honduras', 'passport_index': 61, 'ranking': 108},
+        {'change': -60,
+          'name': 'Marshall Islands',
+          'passport_index': 61,
+          'ranking': 109},
+        {'change': -28, 'name': 'Nauru', 'passport_index': 61, 'ranking': 110},
+        {'change': -19, 'name': 'Lesotho', 'passport_index': 61, 'ranking': 111},
+        {'change': -19, 'name': 'China', 'passport_index': 61, 'ranking': 112},
+        {'change': -16, 'name': 'Tunisia', 'passport_index': 61, 'ranking': 113},
+        {'change': -27, 'name': 'Bolivia', 'passport_index': 59, 'ranking': 114},
+        {'change': -20, 'name': 'eSwatini', 'passport_index': 59, 'ranking': 115},
+        {'change': -18, 'name': 'Malawi', 'passport_index': 59, 'ranking': 116},
+        {'change': -15, 'name': 'Kenya', 'passport_index': 59, 'ranking': 117},
+        {'change': -26, 'name': 'Indonesia', 'passport_index': 59, 'ranking': 118},
+        {'change': -15, 'name': 'Zambia', 'passport_index': 59, 'ranking': 119},
+        {'change': -10, 'name': 'Rwanda', 'passport_index': 59, 'ranking': 120},
+        {'change': -58, 'name': 'Micronesia', 'passport_index': 58, 'ranking': 121},
+        {'change': -24, 'name': 'Suriname', 'passport_index': 58, 'ranking': 122},
+        {'change': -31, 'name': 'Thailand', 'passport_index': 58, 'ranking': 123},
+        {'change': -17, 'name': 'Namibia', 'passport_index': 58, 'ranking': 124},
+        {'change': -16, 'name': 'Tanzania', 'passport_index': 58, 'ranking': 125},
+        {'change': -21, 'name': 'Azerbaijan', 'passport_index': 58, 'ranking': 126},
+        {'change': -10, 'name': 'Ghana', 'passport_index': 58, 'ranking': 127},
+        {'change': -60, 'name': 'Palau Islands', 'passport_index': 57, 'ranking': 128},
+        {'change': -19, 'name': 'Cuba', 'passport_index': 57, 'ranking': 129},
+        {'change': -27,
+          'name': 'Papua New Guinea',
+          'passport_index': 56,
+          'ranking': 130},
+        {'change': -17, 'name': 'Morocco', 'passport_index': 56, 'ranking': 131},
+        {'change': -17, 'name': 'Uganda', 'passport_index': 55, 'ranking': 132},
+        {'change': -21, 'name': 'Armenia', 'passport_index': 55, 'ranking': 133},
+        {'change': -9, 'name': "Cote d'Ivoire", 'passport_index': 55, 'ranking': 134},
+        {'change': -18,
+          'name': 'Cape Verde Islands',
+          'passport_index': 54,
+          'ranking': 135},
+        {'change': -16, 'name': 'Zimbabwe', 'passport_index': 54, 'ranking': 136},
+        {'change': -20, 'name': 'Kyrgyzstan', 'passport_index': 54, 'ranking': 137},
+        {'change': -10, 'name': 'Senegal', 'passport_index': 54, 'ranking': 138},
+        {'change': -15, 'name': 'Gambia', 'passport_index': 53, 'ranking': 139},
+        {'change': -12, 'name': 'Mozambique', 'passport_index': 53, 'ranking': 140},
+        {'change': -17,
+          'name': 'Sao Tome and Principe',
+          'passport_index': 53,
+          'ranking': 141},
+        {'change': -17, 'name': 'Uzbekistan', 'passport_index': 53, 'ranking': 142},
+        {'change': -49, 'name': 'Timor-Leste', 'passport_index': 52, 'ranking': 143},
+        {'change': -12, 'name': 'Sierra Leone', 'passport_index': 52, 'ranking': 144},
+        {'change': -12, 'name': 'Burkina Faso', 'passport_index': 52, 'ranking': 145},
+        {'change': -25,
+          'name': 'Dominican Republic',
+          'passport_index': 51,
+          'ranking': 146},
+        {'change': -14, 'name': 'Benin', 'passport_index': 51, 'ranking': 147},
+        {'change': -20, 'name': 'India', 'passport_index': 51, 'ranking': 148},
+        {'change': -19, 'name': 'Tajikistan', 'passport_index': 51, 'ranking': 149},
+        {'change': -13, 'name': 'Gabon', 'passport_index': 51, 'ranking': 150},
+        {'change': -12, 'name': 'Algeria', 'passport_index': 51, 'ranking': 151},
+        {'change': -11, 'name': 'Jordan', 'passport_index': 51, 'ranking': 152},
+        {'change': -25, 'name': 'Mongolia', 'passport_index': 50, 'ranking': 153},
+        {'change': -9, 'name': 'Niger', 'passport_index': 50, 'ranking': 154},
+        {'change': -7, 'name': 'Guinea-Bissau', 'passport_index': 50, 'ranking': 155},
+        {'change': -26, 'name': 'Philippines', 'passport_index': 49, 'ranking': 156},
+        {'change': -13, 'name': 'Mauritania', 'passport_index': 49, 'ranking': 157},
+        {'change': -11,
+          'name': 'Equatorial Guinea',
+          'passport_index': 49,
+          'ranking': 158},
+        {'change': -10, 'name': 'Guinea', 'passport_index': 49, 'ranking': 159},
+        {'change': -17, 'name': 'Madagascar', 'passport_index': 49, 'ranking': 160},
+        {'change': -17, 'name': 'Bhutan', 'passport_index': 49, 'ranking': 161},
+        {'change': -11, 'name': 'Egypt', 'passport_index': 49, 'ranking': 162},
+        {'change': -8, 'name': 'Cameroon', 'passport_index': 49, 'ranking': 163},
+        {'change': -12, 'name': 'Togo', 'passport_index': 48, 'ranking': 164},
+        {'change': -18, 'name': 'Cambodia', 'passport_index': 48, 'ranking': 165},
+        {'change': -11, 'name': 'Mali', 'passport_index': 48, 'ranking': 166},
+        {'change': -15, 'name': 'Turkmenistan', 'passport_index': 48, 'ranking': 167},
+        {'change': -13, 'name': 'Angola', 'passport_index': 48, 'ranking': 168},
+        {'change': -11, 'name': 'Burundi', 'passport_index': 48, 'ranking': 169},
+        {'change': -2, 'name': 'Liberia', 'passport_index': 47, 'ranking': 170},
+        {'change': -19, 'name': 'Vietnam', 'passport_index': 46, 'ranking': 171},
+        {'change': -13, 'name': 'Chad', 'passport_index': 46, 'ranking': 172},
+        {'change': -11,
+          'name': 'Central African Republic',
+          'passport_index': 46,
+          'ranking': 173},
+        {'change': -16,
+          'name': 'Comoro Islands',
+          'passport_index': 45,
+          'ranking': 174},
+        {'change': -16, 'name': 'Laos', 'passport_index': 45, 'ranking': 175},
+        {'name': 'Congo', 'passport_index': 45, 'ranking': 176},
+        {'change': -17, 'name': 'Haiti', 'passport_index': 44, 'ranking': 177},
+        {'change': -12, 'name': 'Djibouti', 'passport_index': 44, 'ranking': 178},
+        {'change': -6, 'name': 'Nigeria', 'passport_index': 44, 'ranking': 179},
+        {'change': -8,
+          'name': 'Congo, The Democratic Republic of The',
+          'passport_index': 44,
+          'ranking': 180},
+        {'change': -9, 'name': 'Sri Lanka', 'passport_index': 44, 'ranking': 181},
+        {'change': -10, 'name': 'Kosovo', 'passport_index': 44, 'ranking': 182},
+        {'change': -9, 'name': 'South Sudan', 'passport_index': 43, 'ranking': 183},
+        {'change': -5, 'name': 'Sudan', 'passport_index': 43, 'ranking': 184},
+        {'change': -8, 'name': 'Bangladesh', 'passport_index': 42, 'ranking': 185},
+        {'change': -9, 'name': 'Ethiopia', 'passport_index': 41, 'ranking': 186},
+        {'change': -9, 'name': 'Eritrea', 'passport_index': 41, 'ranking': 187},
+        {'change': -12, 'name': 'Lebanon', 'passport_index': 41, 'ranking': 188},
+        {'change': -12, 'name': 'Nepal', 'passport_index': 41, 'ranking': 189},
+        {'change': -8, 'name': 'Libya', 'passport_index': 41, 'ranking': 190},
+        {'change': -14, 'name': 'Myanmar', 'passport_index': 40, 'ranking': 191},
+        {'change': -11, 'name': 'North Korea', 'passport_index': 40, 'ranking': 192},
+        {'change': -5, 'name': 'Pakistan', 'passport_index': 37, 'ranking': 193},
+        {'change': -13, 'name': 'Iran', 'passport_index': 36, 'ranking': 194},
+        {'change': -12,
+          'name': 'Palestinian Territories',
+          'passport_index': 36,
+          'ranking': 195},
+        {'change': -9, 'name': 'Yemen', 'passport_index': 35, 'ranking': 196},
+        {'change': -6, 'name': 'Somalia', 'passport_index': 34, 'ranking': 197},
+        {'change': 4, 'name': 'Syria', 'passport_index': 33, 'ranking': 198},
+        {'change': -7, 'name': 'Iraq', 'passport_index': 30, 'ranking': 199},
+        {'change': -5, 'name': 'Afghanistan', 'passport_index': 30, 'ranking': 200}
+      ],
       chartData: [
         ['Country', 'Passport Index'],
         ["Japan", 125],
@@ -258,6 +525,11 @@ export default {
         ["Iraq", 30],
         ["Afghanistan", 30]
       ],
+      computed: {
+        rankedCountries() {
+          return []
+        }
+      },
       chartOptions: {
         sizeAxis: { minValue: 0, maxValue: 100 },
         backgroundColor: 'white',
@@ -293,7 +565,7 @@ body {
     font-family: 'Helvetica';
     text-align: center;
 }
-.title {
+.app-title {
     padding-top: 2%;
     color: black;
     font-size: 4rem;
@@ -308,10 +580,7 @@ body {
 }
 .map-contain {
   margin: 0 auto;
-  width: 65vw;
-}
-.world-map {
-  margin-top: 5vh;
+  width: 70vw;
 }
 .legend-contain {
   display: flex;
@@ -320,13 +589,16 @@ body {
   justify-content: space-around;
 }
 .legend {
-  margin-top: 3vh;
   width: 14vw;
-  height: 5vh;
-  padding: 4px;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .legend p {
   color: white;
+  margin-bottom: 0 !important;
   font-family: 'Helvetica';
 }
 .legend p:hover {
@@ -347,5 +619,14 @@ body {
 .title-small {
   font-family: 'Righteous', cursive;
   font-size: 2rem;
+  padding: 1rem;
+}
+.measure-contain {
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 4vh;
+}
+.measure-contain-skinny {
+  width: 50vw;
 }
 </style>
