@@ -1,8 +1,25 @@
 <template>
   <v-app responsive>
+     <v-snackbar
+        :timeout="-1"
+        :value="true"
+        absolute
+        top
+        centered
+        color="deep-purple accent-4"
+        elevation="12"
+      >
+        Email <template>
+        <a
+          style="color: white; font-weight: bold;"
+          :href="`mailto:brilj112@newshool.edu`"
+        >
+          brilj112@newschool.edu
+        </a></template>for updates and feedback.
+      </v-snackbar>
     <h1 class="app-title">Tracking Global Mobility</h1>
     <h2 class="subtitle">Passport strength today per country</h2>
-    <div>
+    <v-container>
         <div class="map-contain">
           <GChart
             class="world-map"
@@ -14,13 +31,13 @@
           />
         </div>
         <div class="legend-contain">
-          <div id="legend_1" class="legend"><p>Very Mobile</p></div>
-          <div id="legend_2" class="legend"><p>Somewhat Mobile</p></div>
-          <div id="legend_3" class="legend"><p>Somewhat Limited</p></div>
-          <div id="legend_4" class="legend"><p>Very Limited</p></div>
+          <v-card id="legend_1" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-subtitle></v-card>
+          <v-card id="legend_2" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; color: white; height: 100%">Somewhat Mobile</v-card-subtitle></v-card>
+          <v-card id="legend_3" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; color: white; height: 100%;">Somewhat Limited</v-card-subtitle></v-card>
+          <v-card id="legend_4" class="legend"><v-card-subtitle class="justify-center" style="font-weight: bold; color: white; height: 100%;">Very Limited</v-card-subtitle></v-card>
         </div>
-    </div>
-    <div class="measure-contain">
+    </v-container>
+    <v-container class="measure-contain">
         <h2 class="title-small">Global Rankings</h2>
         <v-data-table
           :headers="headers"
@@ -28,14 +45,35 @@
           class="elevation-1"
           :items-per-page="15"
         ></v-data-table>
-    </div>
-    <div class="measure-contain measure-contain-skinny">
+    </v-container>
+    <v-container class="measure-contain measure-contain-skinny">
         <h2 class="title-small">How is each country measured?</h2>
         <p>We use the ranking model from <a href="https://www.passportindex.org/" target="_blank">Passport Index</a>, which provides updated rankings amongst the pandemic, to gather a hollistic global mobility ranking for different countries.</p>
-    </div>
-    <div class="measure-contain">
+        <p>According to the organization, "Global Passport Power Rank Passports of the world are sorted by their total <a href="https://www.passportindex.org/faq/" target="_blank">Mobility Score</a>, which includes visa-free and visa on arrival privileges. The higher the MS score, the better global mobility its passport bearer enjoys."</p>
+        <p>The following factors go into the Mobility Score calcuation: </p><p>"Mobility Score (MS) is the total number of countries that can be easily accessed with a given passport. It is a calculated total based on Visa-free, Visa-on-arrival, eTA, and eVisa issued within 3 days."</p>
+    </v-container>
+    <v-container class="measure-contain">
         <h2 class="title-small">What did mobility look like before COVID?</h2>
-    </div>
+        <div class="map-contain">
+          <GChart
+            class="world-map"
+            type="GeoChart"
+            style="width: 100%; height: 600px;"
+            :data="oldCountries"
+            :options="chartOptions"
+            :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'}"
+          />
+        </div>
+    </v-container>
+    <v-footer dark padless>
+      <v-card class="flex"
+        flat
+        tile>
+        <v-card-text class="py-2 white--text text-center">
+          {{ new Date().getFullYear() }} — <strong><a href="jbrill.com" id="footer-text" target="_blank">Jason Brill</a></strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -525,11 +563,210 @@ export default {
         ["Iraq", 30],
         ["Afghanistan", 30]
       ],
-      computed: {
-        rankedCountries() {
-          return []
-        }
-      },
+      oldCountries: [
+        ['Country', 'Passport Index'],
+        ["Japan", 171],
+        ["Singapore", 169],
+        ["Germany", 172],
+        ["South Korea", 171],
+        ["Finland", 172],
+        ["Italy", 171],
+        ["Luxembourg", 172],
+        ["Spain", 172],
+        ["Austria", 171],
+        ["Denmark", 171],
+        ["Greenland", 171],
+        ["Iceland", 171],
+        ["France", 170],
+        ["Ireland", 171],
+        ["Netherlands", 171],
+        ["Portugal", 171],
+        ["Sweden", 170],
+        ["Belgium", 170],
+        ["Norway", 170],
+        ["Switzerland", 171],
+        ["United Kingdom", 169],
+        ["United States", 171],
+        ["Czech Republic", 169],
+        ["Greece", 170],
+        ["Malta", 170],
+        ["New Zealand", 169],
+        ["Australia", 168],
+        ["Canada", 169],
+        ["Hungary", 169],
+        ["Lithuania", 169],
+        ["Poland", 169],
+        ["Slovakia", 169],
+        ["Iceland", 168],
+        ["Latvia", 167],
+        ["Slovenia", 168],
+        ["Estonia", 168],
+        ["Liechtenstein", 164],
+        ["Malaysia", 165],
+        ["Monaco", 164],
+        ["Chile", 161],
+        ["Cyprus", 166],
+        ["Romania", 166],
+        ["Bulgaria", 165],
+        ["Argentina", 160],
+        ["Brazil", 161],
+        ["Crotia", 164],
+        ["Hong Kong", 157],
+        ["United Arab Emirates", 179],
+        ["San Marino", 154],
+        ["Andorra", 154],
+        ["Brunei", 153],
+        ["Barbados", 149],
+        ["Israel", 150],
+        ["Mexico", 159],
+        ["St. Kitts and Nevis", 142],
+        ["Bahamas", 145],
+        ["Uruguay", 153],
+        ["Antigua and Barbuda", 139],
+        ["Seychelles", 139],
+        ["Costa Rica", 141],
+        ["Trinidad and Tobago", 138],
+        ["Vatican City", 146],
+        ["Mauritius", 136],
+        ["St. Vincent and the Grenadines", 140],
+        ["St. Lucia", 134],
+        ["Taiwan", 135],
+        ["Macao", 139],
+        ["Grenada", 132],
+        ["Paraguay", 137],
+        ["Panama", 135],
+        ["Dominica", 131],
+        ["Peru", 140],
+        ["El Salvador", 126],
+        ["Honduras", 128],
+        ["Serbia", 134],
+        ["Guatemala", 128],
+        ["Samoa", 127],
+        ["Solomon Islands", 131],
+        ["Vanuatu", 130],
+        ["Nicaragua", 122],
+        ["Ukraine", 141],
+        ["Venezuela", 129],
+        ["Colombia", 129],
+        ["Tuvalu", 125],
+        ["Tonga", 124],
+        ["Montenegro", 124],
+        ["North Macedonia", 124],
+        ["Kiribati", 124],
+        ["Marshall Islands", 121],
+        ["Moldova", 120],
+        ["Palau Islands", 117],
+        ["Micronesia", 116],
+        ["Russia", 122],
+        ["Bosnia and Herzegovina", 119],
+        ["Georgia", 123],
+        ["Albania", 116],
+        ["Turkey", 121],
+        ["Belize", 97],
+        ["South Africa", 103],
+        ["Kuwait", 102],
+        ["Qatar", 102],
+        ["Timor-Leste", 101],
+        ["Ecuador", 91],
+        ["Nauru", 89],
+        ["Fiji", 96],
+        ["Guyana", 90],
+        ["Jamaica", 94],
+        ["Botswana", 84],
+        ["Maldives", 91],
+        ["Papua New Guinea", 83],
+        ["Bahrain", 91],
+        ["Oman", 88],
+        ["Bolivia", 86],
+        ["Suriname", 82],
+        ["Thailand", 89],
+        ["Namibia", 75],
+        ["Saudi Arabia", 88],
+        ["Kazakhstan", 88],
+        ["Belarus", 87],
+        ["Lesotho", 80],
+        ["China", 80],
+        ["eSwatini", 79],
+        ["Malawi", 77],
+        ["Kenya", 74],
+        ["Indonesia", 85],
+        ["Tanzania", 74],
+        ["Zambia", 74],
+        ["Tunisia", 77],
+        ["Gambia", 68],
+        ["Azerbaijan", 79],
+        ["Philippines", 75],
+        ["Uganda", 72],
+        ["Cape Verde Islands", 72],
+        ["Dominican Republic", 76],
+        ["Ghana", 68],
+        ["Zimbabwe", 70],
+        ["Cuba", 76],
+        ["Morocco", 73],
+        ["Armenia", 76],
+        ["Kyrgyzstan", 74],
+        ["Sierra Leone", 64],
+        ["Benin", 65],
+        ["Mongolia", 75],
+        ["Mozambique", 65],
+        ["Sao Tome and Principe", 70],
+        ["Rwanda", 69],
+        ["Burkina Faso", 64],
+        ["Mauritania", 62],
+        ["India", 71],
+        ["Tajikistan", 70],
+        ["Cote d'Ivoire", 64],
+        ["Gabon", 64],
+        ["Uzbekistan", 70],
+        ["Senegal", 64],
+        ["Equatorial Guinea", 60],
+        ["Guinea", 59],
+        ["Madagascar", 66],
+        ["Togo", 60],
+        ["Cambodia", 66],
+        ["Mali", 59],
+        ["Niger", 59],
+        ["Vietnam", 65],
+        ["Bhutan", 66],
+        ["Chad", 59],
+        ["Comoro Islands", 61],
+        ["Guinea-Bissau", 57],
+        ["Turkmenistan", 63],
+        ["Central African Republic", 57],
+        ["Algeria", 63],
+        ["Jordan", 62],
+        ["Angola", 61],
+        ["Burundi", 59],
+        ["Egypt", 60],
+        ["Laos", 61],
+        ["Cameroon", 57],
+        ["Haiti", 61],
+        ["Liberia", 49],
+        ["COG", 52],
+        ["Djibouti", 56],
+        ["Myanmar", 54],
+        ["Nigeria", 50],
+        ["Ethiopia", 50],
+        ["South Sudan", 52],
+        ["Congo, The Democratic Republic of The", 52],
+        ["Eritrea", 50],
+        ["Sri Lanka", 53],
+        ["Bangladesh", 50],
+        ["Iran", 49],
+        ["Kosovo", 54],
+        ["Lebanon", 53],
+        ["North Korea", 51],
+        ["Nepal", 53],
+        ["Libya", 49],
+        ["Sudan", 48],
+        ["Palestinian Territories", 48],
+        ["Somalia", 40],
+        ["Yemen", 44],
+        ["Pakistan", 42],
+        ["Syria", 29],
+        ["Iraq", 37],
+        ["Afghanistan", 35],
+      ],
       chartOptions: {
         sizeAxis: { minValue: 0, maxValue: 100 },
         backgroundColor: 'white',
@@ -572,21 +809,22 @@ body {
     font-family: 'Righteous', cursive;
 }
 .subtitle {
-    color: grey;
-    font-weight: lighter;
+  color: grey;
+  font-weight: lighter;
 }
 .author {
-    color: steelblue;
+  color: steelblue;
 }
 .map-contain {
   margin: 0 auto;
-  width: 70vw;
+  width: 85vw;
 }
 .legend-contain {
   display: flex;
   width: 65vw;
   margin: 0 auto;
   justify-content: space-around;
+  padding: 1rem;
 }
 .legend {
   width: 14vw;
@@ -628,5 +866,11 @@ body {
 }
 .measure-contain-skinny {
   width: 50vw;
+}
+.v-snack--absolute {
+  top: -6vh !important
+}
+#footer-text {
+  color: white !important;
 }
 </style>
