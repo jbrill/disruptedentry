@@ -30,9 +30,8 @@
     <h1 class="app-title">Tracking Passport Mobility</h1>
     <h2 class="subtitle">What Countries Have the Strongest Passports?</h2>
     <v-container>
-        <div class="map-contain">
+        <div>
           <GChart
-            class="world-map"
             type="GeoChart"
             style="width: 100%; height: 600px;"
             :data="chartData"
@@ -64,9 +63,8 @@
     </v-container>
     <v-container>
         <h2 class="title-small">What did mobility look like before COVID?</h2>
-        <div class="map-contain">
+        <div>
           <GChart
-            class="world-map"
             type="GeoChart"
             style="width: 100%; height: 600px;"
             :data="oldCountries"
@@ -80,7 +78,29 @@
         flat
         tile>
         <v-card-text class="py-2 white--text text-center">
-          {{ new Date().getFullYear() }} — <strong><a href="jbrill.com" id="footer-text" target="_blank">Jason Brill</a></strong>
+          {{ new Date().getFullYear() }} — <strong><a href="https://jbrill.com" id="footer-text" target="_blank">Jason Brill</a></strong>
+        </v-card-text>
+        <v-card-text class="py-2 white--text text-center">
+          <v-btn
+            class="mx-4 white--text"
+            icon
+            href="https://twitter.com/jbrill_"
+            target="_blank"
+          >
+            <v-icon size="24px">
+              mdi-twitter
+            </v-icon>
+          </v-btn>
+          <v-btn
+            class="mx-4 white--text"
+            icon
+            href="https://github.com/jbrill/disruptedentry"
+            target="_blank"
+          >
+            <v-icon size="24px">
+              mdi-github
+            </v-icon>
+          </v-btn>
         </v-card-text>
       </v-card>
     </v-footer>
@@ -827,7 +847,6 @@ body {
   color: steelblue;
 }
 .map-contain {
-  margin: 0 auto;
   width: 85vw;
 }
 .legend-contain {
