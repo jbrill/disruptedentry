@@ -73,6 +73,14 @@
           />
         </div>
     </v-container>
+    <v-container>
+        <h2 class="title-small">Resources</h2>
+        <div>
+          <p>Concept inspired by <a href="http://td-architects.eu/projects/img" target="_blank">Theo Deutinger's</a> work on borders, immigration, and socio-cultural maps.</p>
+          <p>Interface inspired by <a href="https://covidexitstrategy.org" target="_blank">covidexitstrategy.org</a></p>
+          <p>Data supplied from <a href="https://passportindex.org" target="_blank">passportindex.org</a></p>
+        </div>
+    </v-container>
     <v-footer dark padless>
       <v-card class="flex"
         flat
@@ -363,12 +371,12 @@ export default {
         {'change': -12, 'name': 'Djibouti', 'passport_index': 44, 'ranking': 178},
         {'change': -6, 'name': 'Nigeria', 'passport_index': 44, 'ranking': 179},
         {'change': -8,
-          'name': 'Congo, The Democratic Republic of The',
+          'name': 'Democratic Republic of the Congo',
           'passport_index': 44,
           'ranking': 180},
         {'change': -9, 'name': 'Sri Lanka', 'passport_index': 44, 'ranking': 181},
         {'change': -10, 'name': 'Kosovo', 'passport_index': 44, 'ranking': 182},
-        {'change': -9, 'name': 'South Sudan', 'passport_index': 43, 'ranking': 183},
+        {'change': -9, 'name': 'SS', 'passport_index': 43, 'ranking': 183},
         {'change': -5, 'name': 'Sudan', 'passport_index': 43, 'ranking': 184},
         {'change': -8, 'name': 'Bangladesh', 'passport_index': 42, 'ranking': 185},
         {'change': -9, 'name': 'Ethiopia', 'passport_index': 41, 'ranking': 186},
@@ -411,6 +419,7 @@ export default {
         ["Sweden", 123],
         ["Belgium", 124],
         ["Norway", 122],
+        ["SJ", 122],
         ["Switzerland", 124],
         ["United Kingdom", 122],
         ["United States", 88],
@@ -530,6 +539,7 @@ export default {
         ["Zimbabwe", 54],
         ["Cuba", 57],
         ["Morocco", 56],
+        ["EH", 56],
         ["Armenia", 55],
         ["Kyrgyzstan", 54],
         ["Sierra Leone", 52],
@@ -542,7 +552,7 @@ export default {
         ["Mauritania", 49],
         ["India", 51],
         ["Tajikistan", 51],
-        ["Cote d'Ivoire", 55],
+        ["CI", 55],
         ["Gabon", 51],
         ["Uzbekistan", 53],
         ["Senegal", 54],
@@ -569,13 +579,13 @@ export default {
         ["Cameroon", 49],
         ["Haiti", 44],
         ["Liberia", 47],
-        ["Congo", 45],
+        ["CG", 45],
         ["Djibouti", 44],
         ["Myanmar", 40],
         ["Nigeria", 44],
         ["Ethiopia", 41],
-        ["South Sudan", 43],
-        ["Congo, The Democratic Republic of The", 44],
+        ["SS", 43],
+        ["CD", 44],
         ["Eritrea", 41],
         ["Sri Lanka", 44],
         ["Bangladesh", 42],
@@ -615,6 +625,7 @@ export default {
         ["Sweden", 170],
         ["Belgium", 170],
         ["Norway", 170],
+        ["SJ", 170],
         ["Switzerland", 171],
         ["United Kingdom", 169],
         ["United States", 171],
@@ -734,6 +745,7 @@ export default {
         ["Zimbabwe", 70],
         ["Cuba", 76],
         ["Morocco", 73],
+        ["EH", 73],
         ["Armenia", 76],
         ["Kyrgyzstan", 74],
         ["Sierra Leone", 64],
@@ -746,7 +758,7 @@ export default {
         ["Mauritania", 62],
         ["India", 71],
         ["Tajikistan", 70],
-        ["Cote d'Ivoire", 64],
+        ["CI", 64],
         ["Gabon", 64],
         ["Uzbekistan", 70],
         ["Senegal", 64],
@@ -773,13 +785,13 @@ export default {
         ["Cameroon", 57],
         ["Haiti", 61],
         ["Liberia", 49],
-        ["COG", 52],
+        ["CG", 52],
         ["Djibouti", 56],
         ["Myanmar", 54],
         ["Nigeria", 50],
         ["Ethiopia", 50],
-        ["South Sudan", 52],
-        ["Congo, The Democratic Republic of The", 52],
+        ["SS", 52],
+        ["CD", 52],
         ["Eritrea", 50],
         ["Sri Lanka", 53],
         ["Bangladesh", 50],
