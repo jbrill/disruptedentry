@@ -28,7 +28,7 @@
         </template>
       </v-snackbar>
     <h1 class="app-title">Tracking Passport Mobility</h1>
-    <h2 class="subtitle">What Countries Have the Strongest Passports?</h2>
+    <h2 class="subtitle">How Mobile Is Your Country's Passport?</h2>
     <v-container>
         <div>
           <GChart
