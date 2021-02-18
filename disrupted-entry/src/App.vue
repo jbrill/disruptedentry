@@ -2,10 +2,11 @@
   <v-app responsive>
      <v-snackbar
         :timeout="-1"
+        app
+        class="top: 2rem"
         v-model="snackbar"
-        absolute
         top
-        centered
+        right
         color="deep-purple accent-4"
         elevation="12"
       >
@@ -40,12 +41,25 @@
           />
         </div>
         <div class="legend-contain">
-          <v-card id="legend_1" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-text></v-card>
-          <v-card id="legend_2" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; color: white; height: 100%">Mobile</v-card-text></v-card>
-          <v-card id="legend_3" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; color: white; height: 100%;">Limited</v-card-text></v-card>
+          <v-card id="legend_1" elevation="12" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-text></v-card>
+          <v-card id="legend_2" elevation="12" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; color: white; height: 100%">Mobile</v-card-text></v-card>
+          <v-card id="legend_3" elevation="12" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; color: white; height: 100%;">Limited</v-card-text></v-card>
           <!-- <v-card id="legend_4" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%;">Very Limited</v-card-text></v-card> -->
         </div>
     </v-container>
+    <v-container>
+        <h2 class="title-small">What did mobility look like before COVID?</h2>
+        <div>
+          <GChart
+            type="GeoChart"
+            style="width: 100%; height: 600px;"
+            :data="oldCountries"
+            :options="chartOptions"
+            :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'}"
+          />
+        </div>
+    </v-container>
+    <v-divider color="#f5f5f5"></v-divider>
     <v-container class="measure-contain">
         <h2 class="title-small">Global Rankings</h2>
         <v-data-table
@@ -60,18 +74,6 @@
         <p>We use the ranking model from <a href="https://www.passportindex.org/" target="_blank">Passport Index</a>, which provides updated rankings amongst the pandemic, to gather a hollistic global mobility ranking for different countries.</p>
         <p>According to the organization, "Global Passport Power Rank Passports of the world are sorted by their total <a href="https://www.passportindex.org/faq/" target="_blank">Mobility Score</a>, which includes visa-free and visa on arrival privileges. The higher the MS score, the better global mobility its passport bearer enjoys."</p>
         <p>The following factors go into the Mobility Score calcuation: </p><p>"Mobility Score (MS) is the total number of countries that can be easily accessed with a given passport. It is a calculated total based on Visa-free, Visa-on-arrival, eTA, and eVisa issued within 3 days."</p>
-    </v-container>
-    <v-container>
-        <h2 class="title-small">What did mobility look like before COVID?</h2>
-        <div>
-          <GChart
-            type="GeoChart"
-            style="width: 100%; height: 600px;"
-            :data="oldCountries"
-            :options="chartOptions"
-            :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'}"
-          />
-        </div>
     </v-container>
     <v-container>
         <h2 class="title-small">Resources</h2>
@@ -866,11 +868,9 @@ body {
   width: 65vw;
   margin: 0 auto;
   justify-content: space-around;
-  padding: 1rem;
 }
 .legend {
   width: 14vw;
-  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: center;
