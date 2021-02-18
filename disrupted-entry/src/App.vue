@@ -27,8 +27,8 @@
           </v-btn>
         </template>
       </v-snackbar>
-    <h1 class="app-title">Tracking Passport Mobility</h1>
-    <h2 class="subtitle">How Mobile Is Your Country's Passport?</h2>
+    <h1 class="app-title">Tracking Passport Mobility Today</h1>
+    <h2 class="subtitle">How Mobile Is Your Country's Passport Despite COVID Restrictions?</h2>
     <v-container>
         <div>
           <GChart
@@ -40,10 +40,10 @@
           />
         </div>
         <div class="legend-contain">
-          <v-card id="legend_1" class="legend"><v-card-text class="justify-center" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-text></v-card>
-          <v-card id="legend_2" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%">Somewhat Mobile</v-card-text></v-card>
-          <v-card id="legend_3" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%;">Somewhat Limited</v-card-text></v-card>
-          <v-card id="legend_4" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%;">Very Limited</v-card-text></v-card>
+          <v-card id="legend_1" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; height: 100%; color: white">Very Mobile</v-card-text></v-card>
+          <v-card id="legend_2" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; color: white; height: 100%">Mobile</v-card-text></v-card>
+          <v-card id="legend_3" class="legend"><v-card-text class="justify-center title" style="font-weight: bold; color: white; height: 100%;">Limited</v-card-text></v-card>
+          <!-- <v-card id="legend_4" class="legend"><v-card-text class="justify-center" style="font-weight: bold; color: white; height: 100%;">Very Limited</v-card-text></v-card> -->
         </div>
     </v-container>
     <v-container class="measure-contain">
@@ -132,9 +132,9 @@ export default {
           sortable: true,
           value: 'name',
         },
-        { text: 'Ranking', value: 'ranking' },
-        { text: 'Passport Index Score', value: 'passport_index' },
-        { text: 'Change Since 2019', value: 'change' },
+        { text: 'Ranking Today', value: 'ranking' },
+        { text: 'Passport Index Score Today', value: 'passport_index' },
+        { text: 'Passport Index Change Since 2019', value: 'change' },
       ],
       countries: [
         {'change': 0, 'name': 'Malta', 'passport_index': 170, 'ranking': 1},
@@ -813,7 +813,7 @@ export default {
       chartOptions: {
         sizeAxis: { minValue: 0, maxValue: 100 },
         backgroundColor: 'white',
-        colorAxis: {colors: ['#e31b23', 'yellow', '#00853f']},
+        colorAxis: {colors: ['#4C5763', '#68A4E3', '#B0CBE8']},
         datalessRegionColor: 'white',
         defaultColor: '#f5f5f5',
         tooltip: { trigger: "focus", isHtml: true },
@@ -885,16 +885,13 @@ body {
   cursor: default;
 }
 #legend_1 {
-  background-color: #00853f;
+  background-color: #B0CBE8;
 }
 #legend_2 {
-  background-color: #b8d648;
+  background-color: #68A4E3;
 }
 #legend_3 {
-  background-color: #EAB841;
-}
-#legend_4 {
-  background-color: #e31b23;
+  background-color: #4C5763;
 }
 .title-small {
   font-family: 'Righteous', cursive;
